@@ -1,4 +1,33 @@
 body {
-    background-image: url(../images/ballerina.png) no-repeat;
+    background: url(../images/215907background.jpg) no-repeat;
     background-size: 100%;
 }
+
+h1 {
+    text-align: center;
+    font-size: 60px;
+}
+
+#dance-form {
+    text-align: center;
+    display: inline-block;
+
+}
+
+button {
+    margin: 5px;
+    display: inline-block;
+    margin-top: 0;
+    
+    
+    
+    
+    
+}
+
+
+
+form, input {
+    padding: 5px;
+}
+  
