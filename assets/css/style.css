@@ -18,16 +18,13 @@ button {
     margin: 5px;
     display: inline-block;
     margin-top: 0;
-    
-    
-    
-    
-    
 }
-
-
 
 form, input {
     padding: 5px;
+}
+
+#dances {
+    text-align: center;
 }
   
