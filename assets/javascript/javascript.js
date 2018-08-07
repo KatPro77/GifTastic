@@ -8,29 +8,29 @@ $(document).ready(function () {
         $("#dance-view").empty();
 
         for (var i = 0; i < dances.length; i++) {
-            var x = $("<button>");
-            x.addClass("dancing");
-            x.attr("data-name", dances[i]);
-            x.text(dances[i]);
-            $("#dance-view").append(x);
+            var d = $("<button>");
+            d.addClass("dancing");
+            d.attr("data-name", dances[i]);
+            d.text(dances[i]);
+            $("#dance-view").append(d);
         }
     }
+    renderButtons();
 
     $("add-dance").on("click", function (event) {
         event.preventDefault();
         var dance = $("#dance-input").val().trim();
-        dances.push(dance);
+        
+        dance.push(dances);
         renderButtons();
-
     });
-    renderButtons();
-
 
     $("#dance-view").on("click", function () {
         //queryURL for Giphy API
-        var dance = $(this).attr("data-dance");
-        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + dances + "&api_key=xkDgjQ09sDmx8fw3eDCfEfPxCIV30CAY&limit=10";
+        // var dance = $(this).attr("data-dance");
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + dances + "&api_key=tzmPw5qcowMBrrBptGHnPjVTLSP1pXnf&limit=10";
 
+        //AJAX call
         $.ajax({
             url: queryURL,
             method: "GET"
@@ -54,17 +54,17 @@ $(document).ready(function () {
                 $("#dances").append(danceDiv);
             }
 
-
-            function changeState(){
+            //functions to start and stop gifs
+            function changeState() {
                 var state = $(this).attr("data-state");
                 var animateImage = $(this).attr("data-animate");
                 var stillImage = $(this).attr("data-still");
-        
+
                 if (state == "still") {
                     $(this).attr("src", animateImage);
                     $(this).attr("data-state", "animate");
                 }
-        
+
                 else if (state == "animate") {
                     $(this).attr("src", stillImage);
                     $(this).attr("data-state", "still");
