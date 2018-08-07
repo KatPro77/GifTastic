@@ -37,6 +37,7 @@ $(document).ready(function () {
         }).then(function (response) {
             var results = response.data;
             $("#dances").empty();
+            console.log(response);
 
             for (var i = 0; i < results.length; i++) {
                 var danceDiv = $("<div>");
@@ -53,11 +54,29 @@ $(document).ready(function () {
                 $("#dances").append(danceDiv);
             }
 
+
+            function changeState(){
+                var state = $(this).attr("data-state");
+                var animateImage = $(this).attr("data-animate");
+                var stillImage = $(this).attr("data-still");
+        
+                if (state == "still") {
+                    $(this).attr("src", animateImage);
+                    $(this).attr("data-state", "animate");
+                }
+        
+                else if (state == "animate") {
+                    $(this).attr("src", stillImage);
+                    $(this).attr("data-state", "still");
+                }
+            }
+
+            $(document).on("click", ".gif", changeState);
             // var danceImage = $("<img>");
             // danceImage.attr("src", danceURL);
 
             // $("#dance-view").html(JSON.stringify());
-            // console.log(response);
+            // 
         });
     });
 
